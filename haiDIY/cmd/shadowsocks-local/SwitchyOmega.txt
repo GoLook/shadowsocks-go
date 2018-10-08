@@ -1,0 +1,4 @@
+在客户端，运行shadowsocks-local。改变你的浏览器的代理设置
+SOCKS5 127.0.0.1:local_port
+
+google扩展插件安装： SwitchyOmega 情景模式： proxy
