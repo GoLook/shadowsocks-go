@@ -1,0 +1,96 @@
+本脚本适用环境
+系统支持：CentOS 6,7，Debian，Ubuntu
+内存要求：≥128M
+日期：2018 年 01 月 20 日
+测试实例：centos7.4
+
+关于本脚本
+一键安装 Go 版的 shadowsocks 最新版本 1.2.1（某位大大自编译的）。与 python 版不同的是，其客户端程序能使用多个服务端配置，本脚本安装的是服务端程序。
+
+默认配置
+服务器端口：自己设定（如不设定，默认为 8989）
+密码：自己设定（如不设定，默认为abc23456）
+加密方式：自己设定（如不设定，默认为 aes-256-cfb）
+备注：脚本默认创建单用户配置文件，如需配置多用户，安装完毕后参照下面的教程示例手动修改配置文件后重启即可。
+
+使用方法
+使用root用户登录，运行以下命令：
+
+yum -y install wget
+注意：其他系统的根据具体来安装wget，这里就不多说了
+
+脚本安装
+wget --no-check-certificate https://raw.githubusercontent.com/quniu/shadowsocks-all/master/install/shadowsocks-all.sh
+chmod +x shadowsocks-all.sh
+./shadowsocks-all.sh 2>&1 | tee shadowsocks-go.log
+根据提示安装即可！
+
+
+安装完成提示如下
+
+Congratulations, Shadowsocks-Go server install completed!
+Your Server IP        :  35.147.250.111
+Your Server Port      :  8989 
+Your Password         :  abc123456 
+Your Encryption Method:  aes-256-cfb 
+
+Your QR Code: (For Shadowsocks Windows, OSX, Android and iOS clients)
+ ss://YWVzLTI1Ni1jZmI6YWJjMTIzNDU2QDM1LjE4Ny4yMjkuMTI4Ojg5ODk= 
+Your QR Code has been saved as a PNG file path:
+ /root/shadowsocks_go_qr.png 
+
+Installation has been completed, enjoy it!
+卸载方法：
+使用root用户登录，运行以下命令：
+
+./shadowsocks-all.sh uninstall
+查看服务运行
+安装完成， shadowsocks-go服务已后台启动
+
+service shadowsocks-go status
+可以查看 shadowsocks-go 进程是否已经启动。
+
+注意：本脚本安装完成后，已将 shadowsocks-go 加入开机自启动。
+
+配置文件
+配置文件路径：/etc/shadowsocks-go/config.json
+
+{
+    "server":"0.0.0.0",
+    "server_port":8989,
+    "local_port":1080,
+    "password":"abc123456",
+    "method":"aes-256-cfb",
+    "timeout":300
+}
+多用户多端口配置文件示例
+
+{
+    "port_password": {
+        "8989":"password0",
+        "9001":"password1",
+        "9002":"password2",
+        "9003":"password3",
+        "9004":"password4"
+    },
+    "method": "aes-256-cfb",
+    "timeout": 300
+}
+服务命令
+Shadowsocks-Go 版（start | stop | restart | status）
+
+# start | stop | restart | status
+# 重启
+service shadowsocks-go restart 
+# 停止
+service shadowsocks-go stop
+# 启动
+service shadowsocks-go start
+# 查看运行状态
+service shadowsocks-go status
+同理，也可以这样
+
+# 重启
+/etc/init.d/shadowsocks-go restart
+
+转自作者：马儿爱吃草
