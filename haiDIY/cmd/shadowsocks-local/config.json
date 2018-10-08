@@ -2,7 +2,7 @@
 "server" : "111.11.123.123",
 "server_port" : 9999,
 "local_port" : 1080,
-"password" : "cc1513",
+"password" : "xyz789",
 "timeout" : 600,
 "method" : "aes-256-cfb"
 }
