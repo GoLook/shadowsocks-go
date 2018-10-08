@@ -78,6 +78,15 @@ go get github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-server
 go get github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-local
 根据你设置的GOPATH可能需要root权限。
 
+##==
+需要先开代理后，再
+go get github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-server
+再 go build shadowsocks-server
+否则会下载不了go的系统包-->
+package golang.org/x/sys/cpu: unrecognized import path "golang.org/x/sys/cpu" 
+(https fetch: Get https://golang.org/x/sys/cpu?go-get=1: dial tcp 216.239.37.1:443: i/o timeout)
+
+##==
 1.3 运行
 前面，我们通过二进制文件或者源码安装好了shadowsocks-go，那么接下来，就是如何运行它了。
 
