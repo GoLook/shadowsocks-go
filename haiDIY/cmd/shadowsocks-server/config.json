@@ -1,0 +1,11 @@
+{
+    "server":"0.0.0.0",
+    "local_port":1080,
+	"local_address":"127.0.0.1",
+    "port_password":{
+	"8888":"xyz12345678",
+	"9999":"xyz12345"
+	},
+    "method": "aes-256-cfb",
+    "timeout":600
+}
